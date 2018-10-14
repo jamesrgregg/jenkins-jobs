@@ -1,0 +1,11 @@
+- job:
+    name: edgex-pipeline-job
+    project-type: pipeline
+    sandbox: true
+    pipeline-scm:
+      scm:
+        - git:
+            url: https://github.com/jamesrgregg/jenkins-jobs.git
+            clean: true
+      script-path: edgex-pipeline-job.groovy
+      lightweight-checkout: true
