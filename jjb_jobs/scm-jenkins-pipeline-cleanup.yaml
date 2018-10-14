@@ -1,0 +1,11 @@
+- job:
+    name: pipeline-cleanup-job
+    project-type: pipeline
+    sandbox: true
+    pipeline-scm:
+      scm:
+        - git:
+            url: https://github.com/jamesrgregg/jenkins-jobs.git
+            clean: true
+      script-path: scm-pipeline-cleanup.groovy
+      lightweight-checkout: true

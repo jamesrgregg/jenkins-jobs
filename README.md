@@ -1,2 +1,2 @@
 # jenkins-jobs
-repo to manage JJB scripts for local Jenkins
+Manage JJB scripts for local Jenkins development

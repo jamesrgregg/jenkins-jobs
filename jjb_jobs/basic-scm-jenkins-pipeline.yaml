@@ -1,0 +1,11 @@
+- job:
+    name: pac-pipeline-scm-job
+    project-type: pipeline
+    sandbox: true
+    pipeline-scm: 
+      scm:
+        - git:
+            url: https://github.com/jamesrgregg/jenkins-jobs.git
+            clean: true
+      script-path: Jenkinsfile
+      lightweight-checkout: true

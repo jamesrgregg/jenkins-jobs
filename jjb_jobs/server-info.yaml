@@ -1,0 +1,14 @@
+- job:
+    name: jenkins-server-info-freestyle-job
+    parameters:
+      - string:
+          name: message
+          default: Hello World
+    description: 'Automatically generated test'
+    project-type: freestyle
+    builders:
+      - shell: 'echo $message'
+      - shell: 'hostname'
+      - shell: 'hostname --ip-address'
+      - shell: 'pwd'
+      - shell: 'whoami'

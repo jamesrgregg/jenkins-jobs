@@ -1,0 +1,11 @@
+- job:
+    name: docker-security-bench-pipeline-before-job
+    project-type: pipeline
+    sandbox: true
+    pipeline-scm:
+      scm:
+        - git:
+            url: https://github.com/jamesrgregg/jenkins-jobs.git
+            clean: true
+      script-path: docker-security-bench-pipeline-before.groovy
+      lightweight-checkout: true
