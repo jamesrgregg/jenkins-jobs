@@ -10,10 +10,7 @@ podTemplate(label: 'mypod', containers: [
         stage('Check running containers') {
             container('docker') {
                 // example to show you can run docker commands when you mount the socket
-                // sh 'docker stop docker-non-root-nginx'
-                // sh 'docker rm docker-non-root-nginx'
                 sh 'docker -v'
-                // sh 'docker run --name docker-nonroot-nginx -p 80:8080 -d skpau/nonroot-nginx'
                 sh 'docker run --name docker-non-root-nginx -p 8088:8088 -d jrgreggdevops/docker-nonroot-nginx'
                 sh 'docker ps'
             }
@@ -22,7 +19,6 @@ podTemplate(label: 'mypod', containers: [
         stage('Clone repository') {
             container('git') {
                 sh 'git clone -b master https://github.com/docker/docker-bench-security.git'
-		        // sh 'cd docker-bench-security/'
             }
         }
         stage('Build & Run Docker Security Bench') {
