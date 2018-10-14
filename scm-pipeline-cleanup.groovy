@@ -12,10 +12,10 @@ podTemplate(label: 'mypod', containers: [
   stage('Check running containers') {
    container('docker') {
     // example to show you can run docker commands when you mount the socket
-    sh 'docker images -a |grep "nginx"'
+    sh 'docker images'
     sh 'docker images -f dangling=true'
     sh 'docker ps -a -f status=exited'
-    sh 'docker rm detached-nginx'
+    //sh 'docker rm detached-nginx'
     //sh 'docker rm docker-nonroot-nginx'
 
    }
@@ -27,6 +27,8 @@ podTemplate(label: 'mypod', containers: [
      sh 'echo starting cleanup of all Docker images'
      //sh 'docker-compose stop'
      //sh 'docker-compose down'
+     sh 'docker stop nginx'
+     sh 'docker rm nginx'
     }
     stage('Cleanup images') {
      container('docker') {
