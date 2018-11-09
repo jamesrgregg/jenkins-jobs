@@ -1,5 +1,5 @@
 - job:
-    name: pac-pipeline-scm-job
+    name: pipelineascode-pipeline-scm-job
     project-type: pipeline
     sandbox: true
     pipeline-scm: 
