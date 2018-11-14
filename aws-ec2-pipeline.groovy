@@ -15,7 +15,6 @@ podTemplate(label: 'mypod', containers: [
     //sh 'docker ps'
     //sh 'pwd'
     sh 'docker pull jrgreggdevops/docker-awscli:1.0'
-    //sh 'docker run --rm --volume ${HOME}/.aws:/root/.aws:ro dweomer/awscli whoami'
    }
   }
 
