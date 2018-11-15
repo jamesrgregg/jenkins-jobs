@@ -31,7 +31,7 @@ podTemplate(label: 'mypod', containers: [
 
       usernameVariable: 'AWS_ACCESS_KEY_ID')]) {
 
-      sh 'aws ec2 describe-instances --region us-west-2 --filter Name=tag:Owner,Values=ownername --query Reservations[*].Instances[*].[InstanceId,ImageId,LaunchTime,Tags[`Owner`].Value] > auditResults.txt'
+      sh 'aws ec2 describe-instances --region us-west-2 --filter Name=tag:Owner,Values=foobar --query Reservations[*].Instances[*].[InstanceId,ImageId,LaunchTime,Tags[`Owner`].Value] > auditResults.txt'
      }
 
     }
