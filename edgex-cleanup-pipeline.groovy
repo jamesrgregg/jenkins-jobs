@@ -12,10 +12,11 @@ podTemplate(label: 'mypod', containers: [
   stage('Check running containers') {
    container('docker') {
     // example to show you can run docker commands when you mount the socket
+    sh 'docker images'
     sh 'docker images -a |grep "edgex"'
     sh 'docker images -f dangling=true'
     sh 'docker system df'
-    //sh 'docker ps -a -f status=exited'
+    sh 'docker ps -a -f status=exited'
 
    }
   }
@@ -39,20 +40,20 @@ podTemplate(label: 'mypod', containers: [
     stage('Cleanup images') {
      container('docker') {
       dir('.') {
-       sh 'docker rmi edgexfoundry/docker-core-config-seed-go:0.6.1 --force'
-       sh 'docker rmi edgexfoundry/docker-support-notifications-go:0.6.1 --force'
-       sh 'docker rmi edgexfoundry/docker-support-logging-go:0.6.1 --force'
-       sh 'docker rmi edgexfoundry/docker-core-command-go:0.6.1 --force'
-       sh 'docker rmi edgexfoundry/docker-core-metadata-go:0.6.1 --force'
-       sh 'docker rmi edgexfoundry/docker-core-data-go:0.6.1 --force'
-       sh 'docker rmi edgexfoundry/docker-export-distro-go:0.6.1 --force'
-       sh 'docker rmi edgexfoundry/docker-export-client-go:0.6.1 --force'
-       sh 'docker rmi edgexfoundry/docker-support-rulesengine:0.6.0 --force'
-       sh 'docker rmi edgexfoundry/docker-device-virtual:0.6.0 --force'
-       sh 'docker rmi edgexfoundry/docker-support-scheduler:0.6.0 --force'
-       sh 'docker rmi edgexfoundry/docker-edgex-mongo:0.6.0 --force'
-       sh 'docker rmi edgexfoundry/docker-edgex-volume:latest --force'
-       sh 'docker rmi jrgreggdevops/docker-nonroot-nginx --force'
+       // sh 'docker rmi edgexfoundry/docker-core-config-seed-go:0.6.1 --force'
+       // sh 'docker rmi edgexfoundry/docker-support-notifications-go:0.6.1 --force'
+       // sh 'docker rmi edgexfoundry/docker-support-logging-go:0.6.1 --force'
+       // sh 'docker rmi edgexfoundry/docker-core-command-go:0.6.1 --force'
+       // sh 'docker rmi edgexfoundry/docker-core-metadata-go:0.6.1 --force'
+       // sh 'docker rmi edgexfoundry/docker-core-data-go:0.6.1 --force'
+       // sh 'docker rmi edgexfoundry/docker-export-distro-go:0.6.1 --force'
+       // sh 'docker rmi edgexfoundry/docker-export-client-go:0.6.1 --force'
+       // sh 'docker rmi edgexfoundry/docker-support-rulesengine:0.6.0 --force'
+       // sh 'docker rmi edgexfoundry/docker-device-virtual:0.6.0 --force'
+       // sh 'docker rmi edgexfoundry/docker-support-scheduler:0.6.0 --force'
+       // sh 'docker rmi edgexfoundry/docker-edgex-mongo:0.6.0 --force'
+       // sh 'docker rmi edgexfoundry/docker-edgex-volume:latest --force'
+       // sh 'docker rmi jrgreggdevops/docker-nonroot-nginx --force'
        sh 'docker images'
        sh 'docker system df'
       }
