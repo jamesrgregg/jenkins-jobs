@@ -13,7 +13,6 @@ podTemplate(label: 'mypod', containers: [
    container('docker') {
     // example to show you can run docker commands when you mount the socket
     sh 'docker images'
-    sh 'docker images -a |grep "edgex"'
     sh 'docker images -f dangling=true'
     sh 'docker system df'
     sh 'docker ps -a -f status=exited'
@@ -32,9 +31,9 @@ podTemplate(label: 'mypod', containers: [
    container('compose') {
     dir('.') {
      // step([$class: 'DockerComposeBuilder', dockerComposeFile: 'docker-compose.yml', option: [$class: 'ExecuteCommandInsideContainer', command: 'pull', index: 1, privilegedMode: false, service: 'volume', workDir: '.'], useCustomDockerComposeFile: true])
-     sh 'echo starting cleanup of all EdgeX images'
-     sh 'docker-compose stop'
-     //sh 'docker-compose down -v --rmi all --remove-orphans'
+     sh 'echo starting cleanup of all images'
+     // sh 'docker-compose stop'
+     // sh 'docker-compose down -v --rmi all --remove-orphans'
      sh 'docker-compose down'
     }
     stage('Cleanup images') {
