@@ -21,7 +21,7 @@ podTemplate(label: 'mypod', containers: [
             }
         }
 
-        stage('SDK Build') {
+        stage('Build SDK') {
             container('maven') {
                 dir('device-sdk-c/') {
                     sh 'apk add --update --no-cache build-base wget git gcc cmake make yaml-dev libcurl curl-dev libmicrohttpd-dev'
