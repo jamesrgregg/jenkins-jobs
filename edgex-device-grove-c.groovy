@@ -7,20 +7,18 @@ podTemplate(label: 'mypod', containers: [
   ]
   ) {
     node('mypod') {
-        stage('Check running containers') {
+        stage('Start Agent and Cleanup') {
             container('docker') {
                 // example to show you can run docker commands when you mount the socket
-                sh 'hostname'
-                sh 'hostname -i'
-                sh 'docker ps'
                 sh 'docker images'
+                sh 'echo starting cleanup of previous edgex device-grove-c build'
+                sh 'docker rm $(docker ps -a -f status=exited) || docker rmi $(docker images -q -f dangling=true)'
+                sh 'docker rmi device-grove-c'
             }
         }
         
-        stage('Clone repository') {
+        stage('Clone Repository') {
             container('git') {
-                sh 'whoami'
-                sh 'hostname -i'
                 sh 'git clone -b master https://github.com/edgexfoundry/device-grove-c.git'
             }
         }
@@ -28,9 +26,7 @@ podTemplate(label: 'mypod', containers: [
         stage('Build device-grove-c') {
             container('docker') {
                 dir('device-grove-c/') {
-                    sh 'hostname'
-                    sh 'hostname -i'
-                    sh 'docker build . -t device-grove-c -f ./scripts/Dockerfile.alpine-3.8'
+                sh 'docker build . -t device-grove-c -f ./scripts/Dockerfile.alpine-3.8'
                 }
             }
         }
