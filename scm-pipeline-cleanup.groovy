@@ -27,7 +27,7 @@ podTemplate(label: 'mypod', containers: [
      // step([$class: 'DockerComposeBuilder', dockerComposeFile: 'docker-compose.yml', option: [$class: 'ExecuteCommandInsideContainer', command: 'pull', index: 1, privilegedMode: false, service: 'volume', workDir: '.'], useCustomDockerComposeFile: true])
      // sh 'docker-compose stop'
      // sh 'docker-compose down'
-     sh 'echo starting cleanup of all Docker images'
+     sh 'echo starting cleanup of local Jenkins minikube'
      sh 'echo disk space check before cleanup'
      sh 'docker system df'
      sh 'docker rm $(docker ps -a -f status=exited) || docker rmi $(docker images -q -f dangling=true)'

@@ -11,14 +11,15 @@ podTemplate(label: 'mypod', containers: [
             container('docker') {
                 // example to show you can run docker commands when you mount the socket
                 sh 'docker images'
-                sh 'echo starting cleanup of previous edgex device-grove-c build'
-                sh 'docker rm $(docker ps -a -f status=exited) || docker rmi $(docker images -q -f dangling=true)'
-                sh 'docker rmi device-grove-c'
+                // sh 'echo starting cleanup of previous edgex device-grove-c build'
+                // sh 'docker rm $(docker ps -a -f status=exited) || docker rmi $(docker images -q -f dangling=true)'
+                // sh 'docker rmi device-grove-c'
             }
         }
         
         stage('Clone Repository') {
             container('git') {
+                sh 'echo clone edgex device-grove-c repo'
                 sh 'git clone -b master https://github.com/edgexfoundry/device-grove-c.git'
             }
         }

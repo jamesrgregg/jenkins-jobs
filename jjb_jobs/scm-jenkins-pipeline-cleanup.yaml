@@ -1,5 +1,5 @@
 - job:
-    name: pipeline-cleanup-job
+    name: jenkins-minikube-pipeline-cleanup-job
     project-type: pipeline
     sandbox: true
     pipeline-scm:
