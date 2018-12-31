@@ -7,5 +7,5 @@
         - git:
             url: https://github.com/jamesrgregg/jenkins-jobs.git
             clean: true
-      script-path: scm-pipeline-cleanup.groovy
+      script-path: jenkins-pipeline-cleanup.groovy
       lightweight-checkout: true
