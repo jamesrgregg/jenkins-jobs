@@ -1,0 +1,14 @@
+- job:
+    name: simple-device-sdk-c-jenkins-edgex-sandbox
+    parameters:
+      - string:
+          name: message
+          default: Starting Build
+    description: 'Automatically generated for EdgeX device-sdk-c'
+    project-type: freestyle
+    builders:
+      - shell: 'echo $message'
+      - shell: 'git clone -b master https://github.com/edgexfoundry/device-sdk-c.git'
+      - shell: 'cd device-sdk-c/'
+      - shell: 'apt-get install build-base wget git gcc cmake make yaml-dev libcurl curl-dev libmicrohttpd-dev'
+      - shell: './scripts/build.sh'
