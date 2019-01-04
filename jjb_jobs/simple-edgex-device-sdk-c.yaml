@@ -10,5 +10,6 @@
       - shell: 'echo $message'
       - shell: 'git clone -b master https://github.com/edgexfoundry/device-sdk-c.git'
       - shell: 'cd device-sdk-c/'
-      - shell: 'apt-get install build-base wget git gcc cmake make yaml-dev libcurl curl-dev libmicrohttpd-dev'
+      - shell: 'whoami'
+      - shell: 'sudo apt-get install build-base wget git gcc cmake make yaml-dev libcurl curl-dev libmicrohttpd-dev'
       - shell: './scripts/build.sh'
