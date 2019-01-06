@@ -5,6 +5,7 @@
           name: message
           default: Hello World
     description: 'Automatically generated test'
+    build-node: centos7-builder-2c-2g
     project-type: freestyle
     builders:
       - shell: 'echo $message'
@@ -12,3 +13,4 @@
       - shell: 'hostname --ip-address'
       - shell: 'pwd'
       - shell: 'whoami'
+      - shell: 'cmake --version'

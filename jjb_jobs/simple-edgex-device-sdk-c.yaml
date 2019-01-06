@@ -4,12 +4,22 @@
       - string:
           name: message
           default: Starting Build
-    description: 'Automatically generated for EdgeX device-sdk-c'
+      - string:
+          name: project-dir
+          default: device-sdk-c      
+    description: 'local Jenkins development with CMake Plugin'
+    # CMake Plugin for Jenkins not found after defining Global Settings as well as Job Configiguration.
     project-type: freestyle
     builders:
       - shell: 'echo $message'
+      - shell: 'mkdir cmake'
       - shell: 'git clone -b master https://github.com/edgexfoundry/device-sdk-c.git'
-      - shell: 'cd device-sdk-c/'
-      - shell: 'whoami'
-      - shell: 'sudo apt-get install build-base wget git gcc cmake make yaml-dev libcurl curl-dev libmicrohttpd-dev'
-      - shell: './scripts/build.sh'
+      - shell: 'apk add --update --no-cache build-base wget git gcc cmake make yaml-dev libcurl curl-dev libmicrohttpd-dev'
+      - shell: '$WORKSPACE/device-sdk-c/scripts/build.sh'
+      - cmake:
+          source-dir: '$WORKSPACE/$project-dir/src'
+          working-dir: '$WORKSPACE/$project-dir/build'
+          install-dir: '$WORKSPACE/$project-dir/release'
+          build-type: 'Release'
+
+
