@@ -28,7 +28,7 @@ podTemplate(label: 'mypod', containers: [
             container('docker') {
                 dir('device-sdk-c/') {
                     sh 'docker build -f scripts/Dockerfile.alpine-3.7 .'
-                    sh 'ls -hal ./build/release/'
+                    sh 'ls -hal ./edgex-c-sdk/build/release/'
                 }
             }
         }
@@ -36,7 +36,7 @@ podTemplate(label: 'mypod', containers: [
          
          // Archive the build artifacts
          
-         archiveArtifacts artifacts: 'device-sdk-c/build/release/*.gz' , onlyIfSuccessful: true
+         archiveArtifacts artifacts: 'device-sdk-c/edgex-c-sdk/build/release/*.gz' , onlyIfSuccessful: true
         }
     }
 }
