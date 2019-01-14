@@ -1,0 +1,16 @@
+- job:
+    name: device-sdk-c_docker_ubuntu_basebuild-4c-4g_job
+    parameters:
+      - string:
+          name: message
+          default: Build Service with Docker
+    description: 'Automatically generated test'
+    build-node: ubuntu1604-basebuild-4c-4g
+    project-type: freestyle
+    builders:
+      - shell: 'docker --version'
+      - shell: 'docker images'
+      - shell: 'docker ps'
+      - shell: 'git clone -b master https://github.com/edgexfoundry/device-sdk-c.git'      
+      - shell: '$WORKSPACE/device-sdk-c/scripts/build.sh'
+      

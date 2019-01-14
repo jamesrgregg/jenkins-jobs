@@ -1,0 +1,9 @@
+- job:
+    name: device-sdk-c_job
+    description: ''
+    project-type: freestyle
+    build-node: centos7-builder-2c-2g
+    builders:
+      - shell: 'git clone -b master https://github.com/edgexfoundry/device-sdk-c.git'
+      - shell: '$WORKSPACE/device-sdk-c/scripts/build.sh'
+      
