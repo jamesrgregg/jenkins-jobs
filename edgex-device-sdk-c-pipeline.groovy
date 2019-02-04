@@ -30,6 +30,20 @@ podTemplate(label: 'mypod', containers: [
                 }
             }
         }
+
+        stage('Generate Reports') {
+            container('maven') {
+                dir('device-sdk-c/') {
+                    allure([
+                            includeProperties: false,
+                            jdk: '',
+                            properties: [],
+                            reportBuildPolicy: 'ALWAYS',
+                            results: [[path: 'target/allure-results']]
+                    ])
+            }
+            }
+        }        
         stage('Archive Output'){
          
          // Archive the build artifacts
