@@ -27,7 +27,9 @@ podTemplate(label: 'mypod', containers: [
                     sh 'apk add --update --no-cache build-base wget git gcc cmake make yaml-dev libcurl curl-dev libmicrohttpd-dev'
                     sh './scripts/build.sh'
                     // sh 'ls -hal ./build/release/'
-                    sh 'mkdir target/allure-results'
+                    sh 'pwd'
+                    sh 'ls -hal'
+                    sh 'mkdir allure-results'
                 }
             }
         }
