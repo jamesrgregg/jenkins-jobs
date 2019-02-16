@@ -27,9 +27,26 @@ podTemplate(label: 'mypod', containers: [
                     sh 'apk add --update --no-cache build-base wget git gcc cmake make yaml-dev libcurl curl-dev libmicrohttpd-dev'
                     sh './scripts/build.sh'
                     // sh 'ls -hal ./build/release/'
+                    sh 'pwd'
+                    sh 'ls -hal'
+                    sh 'mkdir allure-results'
                 }
             }
         }
+
+        stage('Generate Reports') {
+            container('maven') {
+                dir('device-sdk-c/') {
+                    allure([
+                            includeProperties: false,
+                            jdk: '',
+                            properties: [],
+                            reportBuildPolicy: 'ALWAYS',
+                            results: [[path: 'target/allure-results']]
+                    ])
+            }
+            }
+        }        
         stage('Archive Output'){
          
          // Archive the build artifacts
